@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: test.topic
+      binders:
+        defaultRabbit:
+          type: rabbit
+          environment:
+            spring:
+             rabbitmq:
+              host: 127.0.0.1
+              username: admin
+              password: admin
+              virtual-host: /
