@@ -4,6 +4,12 @@ spring:
       bindings:
         input:
           destination: test.topic
+        output:
+          destination: test.topic
+          contentType: text/plain
+          binder: defaultRabbit
+        error:
+          destination: test.topic
       binders:
         defaultRabbit:
           type: rabbit

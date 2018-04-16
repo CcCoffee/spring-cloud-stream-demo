@@ -5,13 +5,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
+import org.springframework.cloud.stream.messaging.Source;
+import org.springframework.integration.annotation.InboundChannelAdapter;
 import org.springframework.messaging.Message;
 
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @SpringBootApplication
 @EnableBinding(Sink.class)
 public class App {
+
 
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
@@ -26,6 +31,13 @@ public class App {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+    }
+
+    @InboundChannelAdapter(value = Source.OUTPUT)
+    public String timerMessageSource() {
+        String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        System.out.println("publish message :"+format);
+        return format;
     }
 }
 
