@@ -8,6 +8,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<modules>
 		<module>stream-helloworld</module>
+        <module>stream-demo</module>
+		<module>stream-demo2</module>
 	</modules>
 	<packaging>pom</packaging>
 

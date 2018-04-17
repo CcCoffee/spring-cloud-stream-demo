@@ -13,7 +13,7 @@ public class SinkReceiver {
 
     @StreamListener(Sink.INPUT)
     public void receive(Object payload) {
-
-        logger.info("Received:"+payload);
+        String msg = new String((byte[]) payload);
+        logger.info("Received:"+msg);
     }
 }
